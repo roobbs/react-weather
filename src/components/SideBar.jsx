@@ -1,7 +1,7 @@
-export default function SideBar() {
+export default function SideBar(props) {
   return (
     <div className="sideBar">
-      <div>SideBar</div>
+      <div>{props.location}</div>
     </div>
   );
 }
