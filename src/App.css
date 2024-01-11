@@ -87,16 +87,27 @@ input:focus {
 .generalInfo {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   font-size: 1.1rem;
+  padding: 1.5rem;
 }
 .smallInfo {
-  padding-left: 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 .smallInfo p {
   font-weight: 900;
+}
+.forecastHourly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hourCard {
+  background-color: white;
+  border-radius: 10px;
 }
 /*CONTENT END*/
 .footer {
@@ -114,4 +125,12 @@ a {
 }
 a:hover {
   color: #00aeff;
+}
+.undefined {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-family: monospace;
 }

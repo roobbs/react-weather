@@ -1,5 +1,6 @@
 import Header from "./Header";
 import SideBar from "./SideBar";
+import HourCard from "./HourCard";
 import { useEffect, useState } from "react";
 
 export default function Content() {
@@ -17,6 +18,7 @@ export default function Content() {
       .then((res) => res.json())
       .then((response) => {
         const locat = response;
+        console.log(locat);
         setWeatherObj(locat);
         setLocation(locat.location.name);
       });
@@ -25,22 +27,47 @@ export default function Content() {
   function handleSearch(loc) {
     setSearch(loc);
   }
+
+  const hours = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23,
+  ];
+
   return (
     <div className="main">
       <Header city={location} handleChange={handleSearch} />
       <div className="content">
-        {weatherObj && (
-          <SideBar
-            image={weatherObj.current.condition.icon}
-            current={weatherObj.current.temp_c}
-            currentText={weatherObj.current.condition.text}
-            feels={weatherObj.current.feelslike_c}
-            humidity={weatherObj.current.humidity}
-            clouds={weatherObj.current.cloud}
-            rain={weatherObj.current.precip_mm}
-            wind={weatherObj.current.wind_kph}
-            uv={weatherObj.current.uv}
-          />
+        {weatherObj ? (
+          <>
+            <SideBar
+              image={weatherObj.current.condition.icon}
+              current={weatherObj.current.temp_c}
+              currentText={weatherObj.current.condition.text}
+              feels={weatherObj.current.feelslike_c}
+              humidity={weatherObj.current.humidity}
+              clouds={weatherObj.current.cloud}
+              rain={weatherObj.current.precip_mm}
+              wind={weatherObj.current.wind_kph}
+              uv={weatherObj.current.uv}
+            />
+            <div className="forecastHourly">
+              {hours.map((hour, index) => (
+                <HourCard
+                  key={index}
+                  num={hour}
+                  img={
+                    weatherObj.forecast.forecastday[0].hour[hour].condition.icon
+                  }
+                  condition={
+                    weatherObj.forecast.forecastday[0].hour[hour].condition.text
+                  }
+                  temp={weatherObj.forecast.forecastday[0].hour[hour].temp_c}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="undefined">Search for a city //</div>
         )}
       </div>
     </div>
