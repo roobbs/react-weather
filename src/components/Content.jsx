@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState("undefined");
   const [weatherObj, setWeatherObj] = useState();
-  console.log(weatherObj);
 
   useEffect(() => {
     if (search === "Inicial") return;
@@ -18,12 +17,8 @@ export default function Content() {
       .then((res) => res.json())
       .then((response) => {
         const locat = response;
-        console.log(locat);
-        setLocation(locat);
-        // setWeatherObj(response);
-        // setLocation(response.location);
-        // console.log("location");
-        // console.log(location);
+        setWeatherObj(locat);
+        setLocation(locat.location.name);
       });
   }, [search]);
 
@@ -32,9 +27,21 @@ export default function Content() {
   }
   return (
     <div className="main">
-      <Header city={search} handleChange={handleSearch} />
+      <Header city={location} handleChange={handleSearch} />
       <div className="content">
-        {location && <SideBar location={location.location.name} />}
+        {weatherObj && (
+          <SideBar
+            image={weatherObj.current.condition.icon}
+            current={weatherObj.current.temp_c}
+            currentText={weatherObj.current.condition.text}
+            feels={weatherObj.current.feelslike_c}
+            humidity={weatherObj.current.humidity}
+            clouds={weatherObj.current.cloud}
+            rain={weatherObj.current.precip_mm}
+            wind={weatherObj.current.wind_kph}
+            uv={weatherObj.current.uv}
+          />
+        )}
       </div>
     </div>
   );

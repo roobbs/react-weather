@@ -20,7 +20,7 @@ export default function Header({ city, handleChange }) {
     <div className="header">
       <img src={sun} alt="" className="logoImg" />
       <div style={{ display: "flex", gap: ".5rem", alignItems: "center" }}>
-        <img src={map} alt="hola" className="searchImg" />
+        <img src={map} alt="hola" className="locationImg" />
         <div>{city}</div>
       </div>
       <div className="input">

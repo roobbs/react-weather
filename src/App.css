@@ -12,7 +12,7 @@ body {
   text-align: center;
   display: grid;
   grid-template-rows: 1fr auto;
-  background-color: rgb(223, 233, 255);
+  background-color: rgb(183, 196, 225);
 }
 .main {
   display: grid;
@@ -27,10 +27,13 @@ body {
   gap: 0.5rem;
   padding: 0.7rem 1rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 .logoImg {
   height: 2.5rem;
+}
+.locationImg {
+  height: 1.5rem;
 }
 .input {
   border-radius: 8px;
@@ -63,7 +66,37 @@ input:focus {
   grid-template-columns: 1fr 2fr;
 }
 .sideBar {
-  border: 1px solid rgb(0, 110, 255);
+  padding: 2rem 0rem;
+  display: grid;
+  grid-template-rows: auto auto 2fr;
+  background-color: rgb(255, 255, 255);
+  color: rgb(48, 48, 48);
+  margin: 2rem;
+  border-radius: 20px;
+}
+.currentInfo {
+  padding: 0rem 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.generalInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.1rem;
+}
+.smallInfo {
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.smallInfo p {
+  font-weight: 900;
 }
 /*CONTENT END*/
 .footer {
