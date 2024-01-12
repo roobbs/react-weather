@@ -5,6 +5,22 @@ import { useState } from "react";
 
 export default function Header({ city, handleChange }) {
   const [value, setValue] = useState("");
+  // const [listOfCities, setListOfCities] = useState();
+
+  // useEffect(() => {
+  //   if (value === "" || value.length <= 3) return;
+  //   fetch(
+  //     "http://api.weatherapi.com/v1/search.json?key=fdd09a79a4d5440a8ad165337231011&q&q=" +
+  //       value,
+  //     { mode: "cors" }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       const listObj = response;
+  //       console.log(listObj);
+  //       setListOfCities(listObj);
+  //     });
+  // }, [value]);
 
   function handlePress(event) {
     if (event.key === "Enter") {

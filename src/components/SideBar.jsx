@@ -1,7 +1,10 @@
 export default function SideBar(props) {
   return (
     <div className="sideBar">
-      <div>Current Weather</div>
+      <div>
+        Current Weather{" "}
+        <div className="currentHourNumber">{props.hour} hrs</div>
+      </div>
       <div className="currentInfo">
         <img src={props.image} alt="img" />
         <div>{props.current} C°</div>

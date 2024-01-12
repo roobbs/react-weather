@@ -1,7 +1,10 @@
 import Header from "./Header";
 import SideBar from "./SideBar";
 import HourCard from "./HourCard";
+import DayCard from "./DayCard";
 import { useEffect, useState } from "react";
+
+// const key = "fdd09a79a4d5440a8ad165337231011&q";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
@@ -12,7 +15,8 @@ export default function Content() {
     if (search === "Inicial") return;
     fetch(
       "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=" +
-        search,
+        search +
+        "&days=3&aqi=no&alerts=no",
       { mode: "cors" }
     )
       .then((res) => res.json())
@@ -28,11 +32,6 @@ export default function Content() {
     setSearch(loc);
   }
 
-  const hours = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
-  ];
-
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
 
@@ -43,6 +42,7 @@ export default function Content() {
         {weatherObj ? (
           <>
             <SideBar
+              hour={currentHour}
               image={weatherObj.current.condition.icon}
               current={weatherObj.current.temp_c}
               currentText={weatherObj.current.condition.text}
@@ -59,28 +59,34 @@ export default function Content() {
                   Forecast for the next few hours
                 </div>
                 <div className="forecastHourly">
-                  {hours.map((hour, index) =>
-                    index >= currentHour - 12 ? (
+                  {weatherObj.forecast.forecastday[0].hour.map((hour, index) =>
+                    index >= currentHour + 1 ? (
                       <HourCard
                         key={index}
-                        num={hour}
-                        img={
-                          weatherObj.forecast.forecastday[0].hour[hour]
-                            .condition.icon
-                        }
-                        condition={
-                          weatherObj.forecast.forecastday[0].hour[hour]
-                            .condition.text
-                        }
-                        temp={
-                          weatherObj.forecast.forecastday[0].hour[hour].temp_c
-                        }
+                        num={index}
+                        img={hour.condition.icon}
+                        condition={hour.condition.text}
+                        temp={hour.temp_c}
                       />
                     ) : null
                   )}
                 </div>
               </div>
-              <div className="nextDays">NextDays or something</div>
+              <div className="nextDays">
+                {weatherObj.forecast.forecastday.map((day, index) =>
+                  index !== 0 ? (
+                    <DayCard
+                      key={index}
+                      date={day.date}
+                      condition={day.day.condition.text}
+                      img={day.day.condition.icon}
+                      maxTemp={day.day.maxtemp_c}
+                      minTemp={day.day.mintemp_c}
+                      rain={day.day.daily_chance_of_rain}
+                    />
+                  ) : null
+                )}
+              </div>
             </div>
           </>
         ) : (

@@ -73,6 +73,12 @@ input:focus {
   color: rgb(48, 48, 48);
   margin-right: 1rem;
   border-radius: 20px;
+  border: 1px solid transparent;
+}
+.currentHourNumber {
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .currentInfo {
   padding: 0rem 2rem;
@@ -125,6 +131,7 @@ input:focus {
 }
 .hourCard {
   background-color: rgb(255, 255, 255);
+  border: 1px solid transparent;
   color: rgb(66, 66, 68);
   border-radius: 10px;
   padding: 0.5rem 0.7rem;
@@ -135,13 +142,17 @@ input:focus {
   font-family: monospace;
   font-style: italic;
   font-size: 1rem;
+  border-bottom: 1px solid grey;
 }
 /* Ancho del scrollbar */
 ::-webkit-scrollbar {
   height: 10px;
   margin: 1rem;
 }
-
+.sideBar:hover,
+.hourCard:hover {
+  border-color: rgb(255, 123, 75);
+}
 /* Color de la barra de desplazamiento */
 ::-webkit-scrollbar-thumb {
   background-color: rgb(133, 133, 133);
@@ -156,6 +167,13 @@ input:focus {
 .nextDays {
   background-color: rgb(222, 105, 105);
   border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.dayCard {
+  background-color: white;
+  border-radius: 15px;
+  padding: 0.5rem;
 }
 /*CONTENT END*/
 .footer {
@@ -165,6 +183,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 a {
   font-weight: 500;
