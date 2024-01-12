@@ -33,6 +33,9 @@ export default function Content() {
     21, 22, 23,
   ];
 
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours();
+
   return (
     <div className="main">
       <Header city={location} handleChange={handleSearch} />
@@ -50,20 +53,34 @@ export default function Content() {
               wind={weatherObj.current.wind_kph}
               uv={weatherObj.current.uv}
             />
-            <div className="forecastHourly">
-              {hours.map((hour, index) => (
-                <HourCard
-                  key={index}
-                  num={hour}
-                  img={
-                    weatherObj.forecast.forecastday[0].hour[hour].condition.icon
-                  }
-                  condition={
-                    weatherObj.forecast.forecastday[0].hour[hour].condition.text
-                  }
-                  temp={weatherObj.forecast.forecastday[0].hour[hour].temp_c}
-                />
-              ))}
+            <div className="rightContainer">
+              <div className="forecastHourContainer">
+                <div className="forecastTitle">
+                  Forecast for the next few hours
+                </div>
+                <div className="forecastHourly">
+                  {hours.map((hour, index) =>
+                    index >= currentHour - 12 ? (
+                      <HourCard
+                        key={index}
+                        num={hour}
+                        img={
+                          weatherObj.forecast.forecastday[0].hour[hour]
+                            .condition.icon
+                        }
+                        condition={
+                          weatherObj.forecast.forecastday[0].hour[hour]
+                            .condition.text
+                        }
+                        temp={
+                          weatherObj.forecast.forecastday[0].hour[hour].temp_c
+                        }
+                      />
+                    ) : null
+                  )}
+                </div>
+              </div>
+              <div className="nextDays">NextDays or something</div>
             </div>
           </>
         ) : (

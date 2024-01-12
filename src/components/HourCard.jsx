@@ -1,7 +1,7 @@
 export default function HourCard(props) {
   return (
     <div className="hourCard">
-      <div>{props.num}</div>
+      <div className="hourNumber">{props.num}</div>
       <div>
         <div>{props.condition}</div>
         <img src={props.img} alt="hourImg" />
