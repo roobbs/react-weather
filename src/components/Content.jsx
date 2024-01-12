@@ -8,8 +8,29 @@ import { useEffect, useState } from "react";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
-  const [location, setLocation] = useState("undefined");
+  const [location, setLocation] = useState({
+    name: "undefined",
+    region: "Nan",
+  });
   const [weatherObj, setWeatherObj] = useState();
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          var latitud = position.coords.latitude;
+          var longitud = position.coords.longitude;
+          console.log("Ubicación actual: " + latitud + ", " + longitud);
+          setSearch(`${latitud},${longitud}`);
+        },
+        function (error) {
+          console.error("Error al obtener la ubicación: " + error.message);
+        }
+      );
+    } else {
+      console.error("La geolocalización no es compatible en este navegador.");
+    }
+  }, []);
 
   useEffect(() => {
     if (search === "Inicial") return;
@@ -24,7 +45,7 @@ export default function Content() {
         const locat = response;
         console.log(locat);
         setWeatherObj(locat);
-        setLocation(locat.location.name);
+        setLocation(locat.location);
       });
   }, [search]);
 
@@ -37,7 +58,11 @@ export default function Content() {
 
   return (
     <div className="main">
-      <Header city={location} handleChange={handleSearch} />
+      <Header
+        city={location.name}
+        region={location.region}
+        handleChange={handleSearch}
+      />
       <div className="content">
         {weatherObj ? (
           <>
@@ -73,6 +98,7 @@ export default function Content() {
                 </div>
               </div>
               <div className="nextDays">
+                <div>Next days</div>
                 {weatherObj.forecast.forecastday.map((day, index) =>
                   index !== 0 ? (
                     <DayCard

@@ -3,7 +3,7 @@ import sun from "../assets/sun.png";
 import map from "../assets/map.png";
 import { useState } from "react";
 
-export default function Header({ city, handleChange }) {
+export default function Header({ city, region, handleChange }) {
   const [value, setValue] = useState("");
   // const [listOfCities, setListOfCities] = useState();
 
@@ -37,7 +37,9 @@ export default function Header({ city, handleChange }) {
       <img src={sun} alt="" className="logoImg" />
       <div style={{ display: "flex", gap: ".5rem", alignItems: "center" }}>
         <img src={map} alt="hola" className="locationImg" />
-        <div>{city}</div>
+        <div>
+          {city}, {region}
+        </div>
       </div>
       <div className="input">
         <img src={search} alt="" className="searchImg" />

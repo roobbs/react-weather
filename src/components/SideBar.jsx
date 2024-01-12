@@ -24,7 +24,7 @@ export default function SideBar(props) {
           Rain: <p>{props.rain} %</p>
         </div>
         <div className="smallInfo">
-          Wind: <p>{props.wind} K/h</p>
+          Wind: <p>{props.wind} k/h</p>
         </div>
         <div className="smallInfo">
           UV Level: <p>{props.uv}</p>
