@@ -15,17 +15,19 @@ export default function Content() {
   const [weatherObj, setWeatherObj] = useState();
 
   useEffect(() => {
-    fetch(
-      "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico" +
-        "&days=3&aqi=no&alerts=no",
-      { mode: "cors" }
-    )
-      .then((res) => res.json())
-      .then((response) => {
-        const locat = response;
-        setWeatherObj(locat);
-        setLocation(locat.location);
-      });
+    if (search === "Initial") {
+      fetch(
+        "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico" +
+          "&days=3&aqi=no&alerts=no",
+        { mode: "cors" }
+      )
+        .then((res) => res.json())
+        .then((response) => {
+          const mexico = response;
+          setWeatherObj(mexico);
+          setLocation(mexico.location);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -34,7 +36,6 @@ export default function Content() {
         function (position) {
           var latitud = position.coords.latitude;
           var longitud = position.coords.longitude;
-          console.log("Ubicación actual: " + latitud + ", " + longitud);
           setSearch(`${latitud},${longitud}`);
         },
         function (error) {

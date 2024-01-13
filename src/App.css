@@ -290,7 +290,7 @@ input:focus {
 }
 .nextDaysHourlyContainer {
   padding: 0rem;
-  width: 30vw;
+  width: 37vw;
   height: min-content;
   display: flex;
   gap: 0.8rem;
