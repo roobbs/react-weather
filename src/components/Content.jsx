@@ -15,6 +15,20 @@ export default function Content() {
   const [weatherObj, setWeatherObj] = useState();
 
   useEffect(() => {
+    fetch(
+      "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico" +
+        "&days=3&aqi=no&alerts=no",
+      { mode: "cors" }
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        const locat = response;
+        setWeatherObj(locat);
+        setLocation(locat.location);
+      });
+  }, []);
+
+  useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         function (position) {
