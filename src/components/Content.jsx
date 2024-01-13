@@ -115,6 +115,11 @@ export default function Content() {
                         maxTemp={day.day.maxtemp_c}
                         minTemp={day.day.mintemp_c}
                         rain={day.day.daily_chance_of_rain}
+                        wind={day.day.maxwind_kph}
+                        uv={day.day.uv}
+                        sunrise={day.astro.sunrise}
+                        sunset={day.astro.sunset}
+                        hourArray={day.hour}
                       />
                     ) : null
                   )}

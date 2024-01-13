@@ -32,7 +32,7 @@ export default function HourCard(props) {
           </div>
           <div className="hourInfoActive">
             <div>Wind:</div>{" "}
-            <div className="hourInfoNumber">{props.wind}k/h</div>
+            <div className="hourInfoNumber">{props.wind} k/h</div>
           </div>
           <div className="hourInfoActive">
             <div>Clouds:</div>{" "}
