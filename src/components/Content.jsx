@@ -51,10 +51,18 @@ export default function Content() {
         "&days=3&aqi=no&alerts=no",
       { mode: "cors" }
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Response was not ok");
+        }
+        return res.json();
+      })
       .then((response) => {
         const locat = response;
-        setWeatherObj(locat);
+        if (response) setWeatherObj(locat);
+      })
+      .catch((error) => {
+        console.error("Error fetching data", error);
       });
   }, [search]);
 
