@@ -3,32 +3,28 @@ import SideBar from "./SideBar";
 import HourCard from "./HourCard";
 import DayCard from "./DayCard";
 import { useEffect, useState } from "react";
+import jsonData from "../defaultSearch/defaultSearch.json";
 
 // const key = "fdd09a79a4d5440a8ad165337231011&q";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
-  const [location, setLocation] = useState({
-    name: "null",
-    region: "null",
-  });
-  const [weatherObj, setWeatherObj] = useState();
+  const [weatherObj, setWeatherObj] = useState(jsonData);
 
-  useEffect(() => {
-    if (search === "Initial") {
-      fetch(
-        "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico" +
-          "&days=3&aqi=no&alerts=no",
-        { mode: "cors" }
-      )
-        .then((res) => res.json())
-        .then((response) => {
-          const mexico = response;
-          setWeatherObj(mexico);
-          setLocation(mexico.location);
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (search === "Initial") {
+  //     fetch(
+  //       "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico&days=3&aqi=no&alerts=no",
+  //       { mode: "cors" }
+  //     )
+  //       .then((res) => res.json())
+  //       .then((response) => {
+  //         const mexico = response;
+  //         setWeatherObj(mexico);
+  //         setLocation(mexico.location);
+  //       });
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -58,9 +54,7 @@ export default function Content() {
       .then((res) => res.json())
       .then((response) => {
         const locat = response;
-        console.log(locat);
         setWeatherObj(locat);
-        setLocation(locat.location);
       });
   }, [search]);
 
@@ -74,12 +68,12 @@ export default function Content() {
   return (
     <div className="main">
       <Header
-        city={location.name}
-        region={location.region}
+        city={weatherObj.location.name}
+        region={weatherObj.location.region}
         handleChange={handleSearch}
       />
       <div className="content">
-        {weatherObj ? (
+        {weatherObj && (
           <>
             <SideBar
               hour={currentHour}
@@ -142,8 +136,6 @@ export default function Content() {
               </div>
             </div>
           </>
-        ) : (
-          <div className="undefined">Search for a city //</div>
         )}
       </div>
     </div>
