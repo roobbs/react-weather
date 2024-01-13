@@ -86,6 +86,8 @@ export default function Content() {
               rain={weatherObj.current.precip_mm}
               wind={weatherObj.current.wind_kph}
               uv={weatherObj.current.uv}
+              sunset={weatherObj.forecast.forecastday[0].astro.sunset}
+              sunrise={weatherObj.forecast.forecastday[0].astro.sunrise}
             />
             <div className="rightContainer">
               <div className="forecastHourContainer">
