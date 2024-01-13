@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
   const [location, setLocation] = useState({
-    name: "undefined",
-    region: "Nan",
+    name: "null",
+    region: "null",
   });
   const [weatherObj, setWeatherObj] = useState();
 
@@ -24,11 +24,11 @@ export default function Content() {
           setSearch(`${latitud},${longitud}`);
         },
         function (error) {
-          console.error("Error al obtener la ubicación: " + error.message);
+          console.error("Error getting position: " + error.message);
         }
       );
     } else {
-      console.error("La geolocalización no es compatible en este navegador.");
+      console.error("Geolocation is not supported in this browser.");
     }
   }, []);
 
@@ -92,26 +92,33 @@ export default function Content() {
                         img={hour.condition.icon}
                         condition={hour.condition.text}
                         temp={hour.temp_c}
+                        rain={hour.chance_of_rain}
+                        wind={hour.wind_kph}
+                        cloud={hour.cloud}
+                        humidity={hour.humidity}
+                        uv={hour.uv}
                       />
                     ) : null
                   )}
                 </div>
               </div>
-              <div className="nextDays">
-                <div>Next days</div>
-                {weatherObj.forecast.forecastday.map((day, index) =>
-                  index !== 0 ? (
-                    <DayCard
-                      key={index}
-                      date={day.date}
-                      condition={day.day.condition.text}
-                      img={day.day.condition.icon}
-                      maxTemp={day.day.maxtemp_c}
-                      minTemp={day.day.mintemp_c}
-                      rain={day.day.daily_chance_of_rain}
-                    />
-                  ) : null
-                )}
+              <div className="nextDaysContainer">
+                <div className="nextDaysTitle">Next days</div>
+                <div className="nextDays">
+                  {weatherObj.forecast.forecastday.map((day, index) =>
+                    index !== 0 ? (
+                      <DayCard
+                        key={index}
+                        date={day.date}
+                        condition={day.day.condition.text}
+                        img={day.day.condition.icon}
+                        maxTemp={day.day.maxtemp_c}
+                        minTemp={day.day.mintemp_c}
+                        rain={day.day.daily_chance_of_rain}
+                      />
+                    ) : null
+                  )}
+                </div>
               </div>
             </div>
           </>
