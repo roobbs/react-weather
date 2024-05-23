@@ -37,10 +37,13 @@ export default function Header({ city, region, handleChange }) {
     <div className="header">
       <img src={sun} alt="" className="logoImg" />
 
-      <div style={{ display: "flex", gap: ".5rem", alignItems: "center" }}>
+      <div
+        className="currentCity"
+        style={{ display: "flex", gap: ".5rem", alignItems: "center" }}
+      >
         {/* <img src={map} alt="hola" /> */}
         <FaLocationArrow className="locationImg" />
-        <div>
+        <div className="currentCity">
           {city}, {region}
         </div>
       </div>
