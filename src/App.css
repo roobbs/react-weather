@@ -86,7 +86,6 @@ input:focus {
   transition: border-color 0.5s;
 }
 .sideBar:hover {
-  /* animation: sideBar 0.8s; */
   border-color: #ff4218;
 }
 .currentHourNumber {
@@ -208,6 +207,11 @@ input:focus {
   align-items: center;
   justify-content: center;
   gap: 5px;
+  transition: color 0.3s, font-weight 0.3s;
+}
+.hourCardTotalInfo:hover .moreInfoArrow {
+  color: #ff4218;
+  font-weight: 600;
 }
 .arrow {
   margin: 0;
@@ -271,7 +275,11 @@ input:focus {
   display: flex;
 }
 .dayCardContainer:hover {
-  border-color: #f1b900;
+  border-color: #0081dd;
+}
+.dayCardContainer:hover .moreInfoArrow {
+  color: #0081dd;
+  font-weight: 600;
 }
 .dayCard {
   background-color: white;
