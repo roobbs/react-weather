@@ -33,6 +33,7 @@ body {
 }
 .locationImg {
   height: 1.5rem;
+  color: #ff4218;
 }
 .input {
   border-radius: 8px;
@@ -70,10 +71,7 @@ input:focus {
     transform: scale(1);
   }
   50% {
-    transform: scale(0.98);
-  }
-  to {
-    transform: scale(1);
+    transform: scale(0.99);
   }
 }
 .sideBar {
@@ -85,9 +83,11 @@ input:focus {
   margin-right: 1rem;
   border-radius: 20px;
   border: 1px solid transparent;
+  transition: border-color 0.5s;
 }
 .sideBar:hover {
-  animation: sideBar 1.5s;
+  /* animation: sideBar 0.8s; */
+  border-color: #ff4218;
 }
 .currentHourNumber {
   font-family: monospace;
@@ -179,28 +179,15 @@ input:focus {
   gap: 1rem;
   max-width: 800px;
 }
-@keyframes scaleCard {
-  from {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.95);
-    border-color: rgb(255, 94, 0);
-  }
-  80% {
-    border-color: rgb(255, 94, 0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
+
 .hourCardTotalInfo {
   background-color: white;
   border-radius: 10px;
   display: flex;
   margin-bottom: 0.5rem;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
+  transition: border-color 0.5s;
 }
 .hourCard {
   background-color: rgb(255, 255, 255);
@@ -210,7 +197,7 @@ input:focus {
   font-weight: 600;
 }
 .hourCardTotalInfo:hover {
-  animation: scaleCard 2s ease;
+  border-color: #ff4218;
 }
 .moreInfoArrow {
   font-style: italic;
@@ -280,11 +267,11 @@ input:focus {
 .dayCardContainer {
   background-color: white;
   border-radius: 15px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   display: flex;
 }
 .dayCardContainer:hover {
-  animation: scaleCard 1.5s;
+  border-color: #f1b900;
 }
 .dayCard {
   background-color: white;

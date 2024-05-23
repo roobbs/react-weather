@@ -2,6 +2,7 @@ import search from "../assets/buscar.png";
 import sun from "../assets/sun.png";
 import map from "../assets/map.png";
 import { useState } from "react";
+import { FaLocationArrow } from "react-icons/fa6";
 
 export default function Header({ city, region, handleChange }) {
   const [value, setValue] = useState("");
@@ -35,8 +36,10 @@ export default function Header({ city, region, handleChange }) {
   return (
     <div className="header">
       <img src={sun} alt="" className="logoImg" />
+
       <div style={{ display: "flex", gap: ".5rem", alignItems: "center" }}>
-        <img src={map} alt="hola" className="locationImg" />
+        {/* <img src={map} alt="hola" /> */}
+        <FaLocationArrow className="locationImg" />
         <div>
           {city}, {region}
         </div>
