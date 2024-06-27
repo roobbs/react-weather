@@ -1,27 +1,27 @@
 import search from "../assets/buscar.png";
 import sun from "../assets/sun.png";
-import map from "../assets/map.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 
 export default function Header({ city, region, handleChange }) {
   const [value, setValue] = useState("");
-  // const [listOfCities, setListOfCities] = useState();
+  const [listOfCities, setListOfCities] = useState();
 
-  // useEffect(() => {
-  //   if (value === "" || value.length <= 3) return;
-  //   fetch(
-  //     "http://api.weatherapi.com/v1/search.json?key=fdd09a79a4d5440a8ad165337231011&q&q=" +
-  //       value,
-  //     { mode: "cors" }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((response) => {
-  //       const listObj = response;
-  //       console.log(listObj);
-  //       setListOfCities(listObj);
-  //     });
-  // }, [value]);
+  useEffect(() => {
+    const fetchCities = async () => {
+      const response = await fetch(
+        `https://api.weatherapi.com/v1/search.json?key=fdd09a79a4d5440a8ad165337231011&q=${value}`,
+        { mode: "cors" }
+      );
+
+      const result = await response.json();
+      console.log(result);
+      setListOfCities(setListOfCities);
+    };
+    if (value !== "" && value.length > 0) {
+      fetchCities();
+    }
+  }, [value]);
 
   function handlePress(event) {
     if (event.key === "Enter") {
@@ -30,6 +30,7 @@ export default function Header({ city, region, handleChange }) {
   }
 
   function handleValue(event) {
+    console.log(event.target.value);
     setValue(event.target.value);
   }
 
@@ -39,11 +40,14 @@ export default function Header({ city, region, handleChange }) {
 
       <div
         className="currentCity"
-        style={{ display: "flex", gap: ".5rem", alignItems: "center" }}
+        style={{
+          display: "flex",
+          gap: ".5rem",
+          alignItems: "center",
+        }}
       >
-        {/* <img src={map} alt="hola" /> */}
         <FaLocationArrow className="locationImg" />
-        <div className="currentCity">
+        <div className="currentCityName">
           {city}, {region}
         </div>
       </div>
