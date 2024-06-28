@@ -1,0 +1,57 @@
+.header {
+  background-color: rgb(40, 41, 43);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+  position: relative;
+}
+.logoImg {
+  height: 2.5rem;
+}
+.locationImg {
+  height: 1.5rem;
+  color: #ff4218;
+}
+.input {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.searchImg {
+  height: 1.2rem;
+}
+input {
+  border: 2px solid transparent;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.25s;
+  color: rgb(108, 108, 108);
+  outline: none;
+}
+input:focus {
+  color: rgb(0, 0, 0);
+}
+
+.cityListContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 105%;
+  width: 100%;
+  left: 0%;
+  /* max-height: 200px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(66, 66, 66) white; */
+  z-index: 10;
+}

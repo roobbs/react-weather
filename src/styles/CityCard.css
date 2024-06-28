@@ -1,0 +1,25 @@
+.cityCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border: 1px solid transparent;
+  border-bottom-color: rgb(203, 203, 203);
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+.cityName {
+  font-size: 1rem;
+}
+
+.regionContainer {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  color: rgb(98, 98, 98);
+  font-size: 0.8rem;
+  font-weight: 100;
+}
