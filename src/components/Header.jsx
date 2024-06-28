@@ -1,11 +1,13 @@
+import "../styles/Header.css";
 import search from "../assets/buscar.png";
 import sun from "../assets/sun.png";
 import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
+import CityCard from "./CityCard";
 
 export default function Header({ city, region, handleChange }) {
   const [value, setValue] = useState("");
-  const [listOfCities, setListOfCities] = useState();
+  const [listOfCities, setListOfCities] = useState("");
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -13,11 +15,10 @@ export default function Header({ city, region, handleChange }) {
         `https://api.weatherapi.com/v1/search.json?key=fdd09a79a4d5440a8ad165337231011&q=${value}`,
         { mode: "cors" }
       );
-
       const result = await response.json();
-      console.log(result);
-      setListOfCities(setListOfCities);
+      setListOfCities(result);
     };
+
     if (value !== "" && value.length > 0) {
       fetchCities();
     }
@@ -27,6 +28,12 @@ export default function Header({ city, region, handleChange }) {
     if (event.key === "Enter") {
       handleChange(value);
     }
+  }
+
+  function handleCardClick(value) {
+    handleChange(value);
+    setValue("");
+    setListOfCities("");
   }
 
   function handleValue(event) {
@@ -51,15 +58,31 @@ export default function Header({ city, region, handleChange }) {
           {city}, {region}
         </div>
       </div>
-      <div className="input">
-        <img src={search} alt="" className="searchImg" />
-        <input
-          type="text"
-          placeholder="Search"
-          value={value}
-          onChange={handleValue}
-          onKeyDown={handlePress}
-        />
+
+      <div style={{ position: "relative" }}>
+        <div className="input">
+          <img src={search} alt="" className="searchImg" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={value}
+            onChange={handleValue}
+            onKeyDown={handlePress}
+          />
+          {listOfCities && (
+            <div className="cityListContainer">
+              {listOfCities.map((city, index) => (
+                <CityCard
+                  key={index}
+                  city={city.name}
+                  region={city.region}
+                  country={city.country}
+                  onClick={() => handleCardClick(city.name)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
