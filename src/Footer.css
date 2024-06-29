@@ -1,0 +1,25 @@
+.footer {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.204);
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+a {
+  font-weight: 500;
+  color: #0039ca;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #00aeff;
+}
+.undefined {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-family: monospace;
+}
