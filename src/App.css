@@ -138,68 +138,6 @@ body {
   max-width: 800px;
 }
 
-.hourCardTotalInfo {
-  background-color: white;
-  border-radius: 10px;
-  display: flex;
-  margin-bottom: 0.5rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: border-color 0.5s;
-}
-.hourCard {
-  background-color: rgb(255, 255, 255);
-  color: rgb(66, 66, 68);
-  border-radius: 10px;
-  padding: 0.5rem 0.7rem;
-  font-weight: 600;
-}
-.hourCardTotalInfo:hover {
-  border-color: #ff4218;
-}
-.moreInfoArrow {
-  font-style: italic;
-  font-weight: 100;
-  font-size: 0.95rem;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  transition: color 0.3s, font-weight 0.3s;
-}
-.hourCardTotalInfo:hover .moreInfoArrow {
-  color: #ff4218;
-  font-weight: 600;
-}
-.arrow {
-  margin: 0;
-  font-size: 1.5rem;
-}
-.moreInfoActive {
-  padding: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  width: max-content;
-}
-.hourInfoActive {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: space-between;
-  width: 100%;
-}
-.hourInfoNumber {
-  font-weight: 600;
-  font-style: italic;
-}
-.hourNumber {
-  font-family: monospace;
-  font-style: italic;
-  font-size: 1rem;
-  border-bottom: 1px solid grey;
-}
 /* Ancho del scrollbar */
 ::-webkit-scrollbar {
   height: 10px;
@@ -227,68 +165,7 @@ body {
   display: flex;
   gap: 2rem;
 }
-.dayCardContainer {
-  background-color: white;
-  border-radius: 15px;
-  border: 1px solid transparent;
-  display: flex;
-}
-.dayCardContainer:hover {
-  border-color: #0081dd;
-}
-.dayCardContainer:hover .moreInfoArrow {
-  color: #0081dd;
-  font-weight: 600;
-}
-.dayCard {
-  background-color: white;
-  border-radius: 15px;
-  padding: 0.5rem;
-  font-weight: 500;
-  color: rgb(43, 43, 43);
-  font-size: 1.1rem;
-  width: 8rem;
-}
-.dayCardInfo {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-.dayNumber {
-  font-weight: 700;
-  font-family: monospace;
-  font-size: 1.2rem;
-  color: black;
-}
-.maxTemp {
-  font-size: 1.2rem;
-  color: black;
-  align-self: center;
-}
-.minTemp {
-  font-size: 0.95rem;
-  color: black;
-  align-self: flex-end;
-}
-.moreDayInfo {
-  padding: 01rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 10rem;
-}
-.nextDaysHourlyContainer {
-  padding: 0rem;
-  width: 37vw;
-  height: min-content;
-  display: flex;
-  gap: 0.8rem;
-  overflow: auto;
-  transform: scale(0.95);
-}
-.nextDaysHourlyContainer .hourCardTotalInfo {
-  border: 2px solid rgb(45, 45, 45);
-}
+
 /*CONTENT END*/
 .footer {
   color: black;

@@ -6,6 +6,7 @@
   border: 1px solid transparent;
   cursor: pointer;
   transition: border-color 0.5s;
+  width: min-content;
 }
 .hourCard {
   background-color: rgb(255, 255, 255);

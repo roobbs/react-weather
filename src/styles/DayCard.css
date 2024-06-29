@@ -1,0 +1,63 @@
+.dayCardContainer {
+  background-color: white;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  display: flex;
+  transition: all 1s;
+}
+.dayCardContainer:hover {
+  border-color: #0081dd;
+}
+.dayCardContainer:hover .moreInfoArrow {
+  color: #0081dd;
+  font-weight: 600;
+}
+.dayCard {
+  background-color: white;
+  border-radius: 15px;
+  padding: 0.5rem;
+  font-weight: 500;
+  color: rgb(43, 43, 43);
+  font-size: 1.1rem;
+  width: 8rem;
+}
+.dayCardInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.dayNumber {
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: black;
+}
+.maxTemp {
+  font-size: 1.2rem;
+  color: black;
+  align-self: center;
+}
+.minTemp {
+  font-size: 0.95rem;
+  color: black;
+  align-self: flex-end;
+}
+.moreDayInfo {
+  padding: 01rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 10rem;
+}
+.nextDaysHourlyContainer {
+  padding: 0rem;
+  width: 37vw;
+  height: min-content;
+  display: flex;
+  gap: 0.8rem;
+  overflow: auto;
+  transform: scale(0.95);
+}
+.nextDaysHourlyContainer .hourCardTotalInfo {
+  border: 2px solid rgb(45, 45, 45);
+}
