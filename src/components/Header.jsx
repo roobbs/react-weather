@@ -8,6 +8,7 @@ import CityCard from "./CityCard";
 export default function Header({ city, region, handleChange }) {
   const [value, setValue] = useState("");
   const [listOfCities, setListOfCities] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -23,6 +24,13 @@ export default function Header({ city, region, handleChange }) {
       fetchCities();
     }
   }, [value]);
+
+  function handleFocus() {
+    setIsFocused(true);
+  }
+  function handleBlur() {
+    setIsFocused(false);
+  }
 
   function handlePress(event) {
     if (event.key === "Enter") {
@@ -68,8 +76,10 @@ export default function Header({ city, region, handleChange }) {
             value={value}
             onChange={handleValue}
             onKeyDown={handlePress}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
-          {listOfCities && (
+          {listOfCities && isFocused && (
             <div className="cityListContainer">
               {listOfCities.map((city, index) => (
                 <CityCard

@@ -50,9 +50,5 @@ input:focus {
   top: 105%;
   width: 100%;
   left: 0%;
-  /* max-height: 200px;
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(66, 66, 66) white; */
   z-index: 10;
 }
