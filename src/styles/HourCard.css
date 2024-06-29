@@ -37,21 +37,19 @@
   font-size: 1.5rem;
 }
 .moreInfoActive {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.showDayCard {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  width: 0;
-  transform: scale(0);
-  color: transparent;
-  transition: all 0.3s;
-}
-.showDayCard {
   padding: 0.8rem;
-  transform: scaleX(1);
   width: max-content;
+  overflow: visible;
   color: black;
-  /**/
 }
 .hourInfoActive {
   display: flex;
