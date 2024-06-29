@@ -1,3 +1,5 @@
+import "../styles/Footer.css";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -5,6 +7,7 @@ export default function Footer() {
         Created by{" "}
         <a
           href="https://www.github.com/roobbs"
+          title="Roobbs Github"
           target="_blank"
           rel="noreferrer"
         >

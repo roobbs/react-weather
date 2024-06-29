@@ -1,3 +1,6 @@
+import "../styles/SideBar.css";
+import { LuSunrise, LuSunset } from "react-icons/lu";
+
 export default function SideBar(props) {
   return (
     <div className="sideBar">
@@ -32,11 +35,11 @@ export default function SideBar(props) {
       </div>
       <div className="sun">
         <div className="sunriseCard">
-          <div>Sunrise:</div>
+          <LuSunrise size={30} />
           <div className="sunData">{props.sunrise}</div>
         </div>
         <div className="sunsetCard">
-          <div>Sunset:</div>
+          <LuSunset size={30} />
           <div className="sunData">{props.sunset}</div>
         </div>
       </div>

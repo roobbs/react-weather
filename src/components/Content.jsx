@@ -4,27 +4,11 @@ import HourCard from "./HourCard";
 import DayCard from "./DayCard";
 import { useEffect, useState } from "react";
 import jsonData from "../defaultSearch/defaultSearch.json";
-
-// const key = "fdd09a79a4d5440a8ad165337231011&q";
+import "../styles/Content.css";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
   const [weatherObj, setWeatherObj] = useState(jsonData);
-
-  // useEffect(() => {
-  //   if (search === "Initial") {
-  //     fetch(
-  //       "https://api.weatherapi.com/v1/forecast.json?key=fdd09a79a4d5440a8ad165337231011&q=mexico&days=3&aqi=no&alerts=no",
-  //       { mode: "cors" }
-  //     )
-  //       .then((res) => res.json())
-  //       .then((response) => {
-  //         const mexico = response;
-  //         setWeatherObj(mexico);
-  //         setLocation(mexico.location);
-  //       });
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -100,7 +84,9 @@ export default function Content() {
             <div className="rightContainer">
               <div className="forecastHourContainer">
                 <div className="forecastTitle">
-                  Forecast for the next few hours
+                  {currentHour < 23
+                    ? "Forecast for the next few hours:"
+                    : "Check forecast for next days"}
                 </div>
                 <div className="forecastHourly">
                   {weatherObj.forecast.forecastday[0].hour.map((hour, index) =>
@@ -122,7 +108,7 @@ export default function Content() {
                 </div>
               </div>
               <div className="nextDaysContainer">
-                <div className="nextDaysTitle">Next days</div>
+                <div className="nextDaysTitle">Next days:</div>
                 <div className="nextDays">
                   {weatherObj.forecast.forecastday.map((day, index) =>
                     index !== 0 ? (
