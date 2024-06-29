@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/HourCard.css";
 
 export default function HourCard(props) {
   const [moreInfo, setMoreInfo] = useState(false);
@@ -24,30 +25,31 @@ export default function HourCard(props) {
           )}
         </div>
       </div>
-      {moreInfo && (
-        <div className="moreInfoActive">
-          <div className="hourInfoActive">
-            <div>Rain:</div>
-            <div className="hourInfoNumber">{props.rain}%</div>
-          </div>
-          <div className="hourInfoActive">
-            <div>Wind:</div>{" "}
-            <div className="hourInfoNumber">{props.wind} k/h</div>
-          </div>
-          <div className="hourInfoActive">
-            <div>Clouds:</div>{" "}
-            <div className="hourInfoNumber">{props.cloud}%</div>
-          </div>
-          <div className="hourInfoActive">
-            <div>Humidity:</div>{" "}
-            <div className="hourInfoNumber">{props.humidity}%</div>
-          </div>
-          <div className="hourInfoActive">
-            <div>UV level:</div>{" "}
-            <div className="hourInfoNumber">{props.uv}</div>
-          </div>
+
+      <div
+        className={moreInfo ? "moreInfoActive showDayCard" : "moreInfoActive"}
+      >
+        <div className="hourInfoActive">
+          <div>Rain:</div>
+          <div className="hourInfoNumber">{props.rain}%</div>
         </div>
-      )}
+        <div className="hourInfoActive">
+          <div>Wind:</div>
+          <div className="hourInfoNumber">{props.wind} k/h</div>
+        </div>
+        <div className="hourInfoActive">
+          <div>Clouds:</div>
+          <div className="hourInfoNumber">{props.cloud}%</div>
+        </div>
+        <div className="hourInfoActive">
+          <div>Humidity:</div>
+          <div className="hourInfoNumber">{props.humidity}%</div>
+        </div>
+        <div className="hourInfoActive">
+          <div>UV level:</div>
+          <div className="hourInfoNumber">{props.uv}</div>
+        </div>
+      </div>
     </div>
   );
 }

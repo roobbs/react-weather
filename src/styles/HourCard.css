@@ -1,0 +1,71 @@
+.hourCardTotalInfo {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.5s;
+}
+.hourCard {
+  background-color: rgb(255, 255, 255);
+  color: rgb(66, 66, 68);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  font-weight: 600;
+}
+.hourCardTotalInfo:hover {
+  border-color: #ff4218;
+}
+.moreInfoArrow {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 0.95rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: color 0.3s, font-weight 0.3s;
+}
+.hourCardTotalInfo:hover .moreInfoArrow {
+  color: #ff4218;
+  font-weight: 600;
+}
+.arrow {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.moreInfoActive {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 0;
+  transform: scale(0);
+  color: transparent;
+  transition: all 0.3s;
+}
+.showDayCard {
+  padding: 0.8rem;
+  transform: scaleX(1);
+  width: max-content;
+  color: black;
+  /**/
+}
+.hourInfoActive {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: space-between;
+  width: 100%;
+}
+.hourInfoNumber {
+  font-weight: 600;
+  font-style: italic;
+}
+.hourNumber {
+  font-family: monospace;
+  font-style: italic;
+  font-size: 1rem;
+  border-bottom: 1px solid grey;
+}
