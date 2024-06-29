@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HourCard from "./HourCard";
+import "../styles/DayCard.css";
 
 export default function DayCard(props) {
   const [moreInfo, setMoreInfo] = useState(false);
@@ -59,24 +60,30 @@ export default function DayCard(props) {
           </div>
         )}
       </div>
-      {moreInfo ? (
-        <div className="nextDaysHourlyContainer">
-          {props.hourArray.map((hour, index) => (
-            <HourCard
-              key={index}
-              num={index}
-              img={hour.condition.icon}
-              condition={hour.condition.text}
-              temp={hour.temp_c}
-              rain={hour.chance_of_rain}
-              wind={hour.wind_kph}
-              cloud={hour.cloud}
-              humidity={hour.humidity}
-              uv={hour.uv}
-            />
-          ))}
-        </div>
-      ) : null}
+      {/* {moreInfo ? ( */}
+      <div
+        className={
+          moreInfo
+            ? "nextDaysHourlyContainer"
+            : "nextDaysHourlyContainer showHourCards"
+        }
+      >
+        {props.hourArray.map((hour, index) => (
+          <HourCard
+            key={index}
+            num={index}
+            img={hour.condition.icon}
+            condition={hour.condition.text}
+            temp={hour.temp_c}
+            rain={hour.chance_of_rain}
+            wind={hour.wind_kph}
+            cloud={hour.cloud}
+            humidity={hour.humidity}
+            uv={hour.uv}
+          />
+        ))}
+      </div>
+      {/* ) : null} */}
     </div>
   );
 }
