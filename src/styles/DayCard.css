@@ -25,8 +25,8 @@
   color: rgb(101, 89, 0);
 }
 .dayCard {
-  background-color: white;
-  border-radius: 15px;
+  /* background-color: white; */
+  /* border-radius: 15px; */
   padding: 0.5rem;
   font-weight: 500;
   font-size: 1.1rem;
@@ -71,4 +71,11 @@
   flex-direction: column;
   justify-content: space-around;
   gap: 0.8rem;
+}
+
+@media screen and (max-width: 700px) {
+  .dayCardContainer {
+    width: 90vw;
+    justify-content: space-around;
+  }
 }
