@@ -29,7 +29,7 @@ export default function Header({ city, region, handleChange }) {
     setIsFocused(true);
   }
   function handleBlur() {
-    setIsFocused(false);
+    setTimeout(() => setIsFocused(false), 100);
   }
 
   function handlePress(event) {
