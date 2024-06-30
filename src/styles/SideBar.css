@@ -94,3 +94,22 @@
   font-weight: 700;
   font-size: 1rem;
 }
+
+@media screen and (max-width: 1051px) {
+  .sideBar {
+    align-self: center;
+  }
+}
+@media screen and (max-width: 800px) {
+  .sideBar {
+    align-self: auto;
+  }
+  .smallInfo {
+    padding: 0 3rem;
+  }
+}
+@media screen and (max-width: 660px) {
+  .smallInfo {
+    padding: 0;
+  }
+}
