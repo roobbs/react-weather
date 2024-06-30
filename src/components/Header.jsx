@@ -50,7 +50,7 @@ export default function Header({ city, region, handleChange }) {
   }
 
   return (
-    <div className="header">
+    <header className="header" id="header">
       <img src={sun} alt="" className="logoImg" />
 
       <div
@@ -94,6 +94,6 @@ export default function Header({ city, region, handleChange }) {
           )}
         </div>
       </div>
-    </div>
+    </header>
   );
 }
