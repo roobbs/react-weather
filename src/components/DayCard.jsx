@@ -1,10 +1,13 @@
-import { useState } from "react";
-import HourCard from "./HourCard";
 import "../styles/DayCard.css";
+import { WiDirectionUp } from "react-icons/wi";
+import { WiDirectionDown } from "react-icons/wi";
+import { CiSun } from "react-icons/ci";
+import { IoMoonOutline } from "react-icons/io5";
+import { WiRain } from "react-icons/wi";
+import { WiStrongWind } from "react-icons/wi";
+import { TbUvIndex } from "react-icons/tb";
 
 export default function DayCard(props) {
-  const [moreInfo, setMoreInfo] = useState(false);
-
   const firstDay = props.date;
   let day = firstDay.split("-");
   const today = new Date().getDate();
@@ -14,76 +17,63 @@ export default function DayCard(props) {
     day = firstDay;
   }
 
-  function handleMoreInfo() {
-    setMoreInfo(!moreInfo);
-  }
-
   return (
-    <div className="dayCardContainer">
-      <div className="dayCard" onClick={handleMoreInfo}>
+    <a className="dayCardContainer" onClick={props.openModal} href="#header">
+      <div className="dayCard">
         <div className="dayNumber">{day}</div>
         <div className="dayCardInfo">
           <div>{props.condition}</div>
           <img src={props.img} alt="dayImg" />
-          <div className="maxTemp">{props.maxTemp} C°</div>
-          <div className="minTemp">{props.minTemp} C°</div>
+          <div className="maxTemp">
+            <WiDirectionUp size={30} className="dayCardIcon" />
+            {props.maxTemp} C°
+          </div>
+          <div className="minTemp">
+            <WiDirectionDown size={30} className="dayCardIcon" />
+            {props.minTemp} C°
+          </div>
         </div>
       </div>
-      <div className="moreDayInfo" onClick={handleMoreInfo}>
+      <div className="moreDayInfo">
         <div className="hourInfoActive">
-          <div>Chance of rain:</div>
+          <div className="dayCardMoreInfo">
+            <WiRain className="dayCardIcon" size={23} />
+            Chance of rain:
+          </div>
           <div className="hourInfoNumber">{props.rain}%</div>
         </div>
         <div className="hourInfoActive">
-          <div>Max. wind:</div>
+          <div className="dayCardMoreInfo">
+            <WiStrongWind className="dayCardIcon" size={23} />
+            Max. wind:
+          </div>
           <div className="hourInfoNumber">{props.wind} k/h</div>
         </div>
         <div className="hourInfoActive">
-          <div>UV Level:</div>
+          <div className="dayCardMoreInfo">
+            <TbUvIndex className="dayCardIcon" size={23} />
+            UV Level:
+          </div>
           <div className="hourInfoNumber">{props.uv}</div>
         </div>
         <div className="hourInfoActive">
-          <div>Sunrise:</div>
+          <div className="dayCardMoreInfo">
+            <CiSun className="dayCardIcon" size={23} /> Sunrise:
+          </div>
           <div className="hourInfoNumber">{props.sunrise}</div>
         </div>
         <div className="hourInfoActive">
-          <div>Sunset:</div>
+          <div className="dayCardMoreInfo">
+            <IoMoonOutline className="dayCardIcon" size={23} />
+            Sunset:
+          </div>
           <div className="hourInfoNumber">{props.sunset}</div>
         </div>
-        {moreInfo ? (
-          <div className="moreInfoArrow">
-            Less<p className="arrow">«</p>
-          </div>
-        ) : (
-          <div className="moreInfoArrow">
-            See Hourly<p className="arrow">»</p>
-          </div>
-        )}
+
+        <div className="moreInfoArrow">
+          See more (hourly)<p className="arrow">»</p>
+        </div>
       </div>
-      {/* {moreInfo ? ( */}
-      <div
-        className={
-          moreInfo
-            ? "nextDaysHourlyContainer"
-            : "nextDaysHourlyContainer showHourCards"
-        }
-      >
-        {props.hourArray.map((hour, index) => (
-          <HourCard
-            key={index}
-            num={index}
-            img={hour.condition.icon}
-            condition={hour.condition.text}
-            temp={hour.temp_c}
-            rain={hour.chance_of_rain}
-            wind={hour.wind_kph}
-            cloud={hour.cloud}
-            humidity={hour.humidity}
-            uv={hour.uv}
-          />
-        ))}
-      </div>
-      {/* ) : null} */}
-    </div>
+    </a>
   );
 }

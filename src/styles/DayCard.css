@@ -1,72 +1,74 @@
 .dayCardContainer {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid transparent;
   display: flex;
-  transition: all 1s;
+  transition: all 0.3s;
+  width: 50%;
+  position: relative;
 }
 .dayCardContainer:hover {
-  border-color: #0081dd;
+  border-color: #999999;
+  cursor: pointer;
 }
 .dayCardContainer:hover .moreInfoArrow {
-  color: #0081dd;
+  color: orangered;
   font-weight: 600;
 }
-
+.dayCardContainer:hover .dayCardIcon {
+  color: orangered;
+}
+.dayCardContainer:hover .dayNumber {
+  color: orangered;
+}
+.dayCardIcon {
+  color: rgb(101, 89, 0);
+}
 .dayCard {
   background-color: white;
   border-radius: 15px;
   padding: 0.5rem;
   font-weight: 500;
-  color: rgb(43, 43, 43);
   font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
   width: 8rem;
 }
 .dayCardInfo {
   display: flex;
-  flex: 1;
   flex-direction: column;
+}
+.dayCardMoreInfo {
+  display: flex;
+  align-items: center;
+  color: rgb(36, 36, 36);
+  gap: 5px;
 }
 .dayNumber {
   font-weight: 700;
-  font-family: monospace;
-  font-size: 1.2rem;
+  font-family: Arial;
+  font-size: 1rem;
   color: black;
 }
 .maxTemp {
   font-size: 1.2rem;
   color: black;
   align-self: center;
+  display: flex;
+  align-items: center;
 }
 .minTemp {
+  display: flex;
+  align-items: center;
   font-size: 0.95rem;
   color: black;
   align-self: flex-end;
 }
 
 .moreDayInfo {
-  padding: 01rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 10rem;
-}
-
-.nextDaysHourlyContainer {
-  width: 0;
-  overflow: hidden;
-  transform: scale(0.95);
-  padding: 0;
-  padding-bottom: 0;
-  display: flex;
+  justify-content: space-around;
   gap: 0.8rem;
-  transition: all 0.4s;
-}
-.nextDaysHourlyContainer .hourCardTotalInfo {
-  border: 2px solid rgb(45, 45, 45);
-}
-.showHourCards {
-  width: 37vw;
-  height: min-content;
-  overflow: auto;
 }
