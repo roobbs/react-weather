@@ -1,6 +1,6 @@
 .hourCardTotalInfo {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   margin-bottom: 0.5rem;
   border: 1px solid transparent;
@@ -16,7 +16,7 @@
   font-weight: 600;
 }
 .hourCardTotalInfo:hover {
-  border-color: #ff4218;
+  border-color: #adadad;
 }
 .moreInfoArrow {
   font-style: italic;
@@ -32,6 +32,17 @@
 .hourCardTotalInfo:hover .moreInfoArrow {
   color: #ff4218;
   font-weight: 600;
+}
+.hourCardTotalInfo:hover .hourNumber {
+  color: orangered;
+  border-color: orangered;
+}
+.hourCardTotalInfo:hover .hourCardIcon {
+  color: orangered;
+}
+.hourCardIconContainer {
+  display: flex;
+  gap: 5px;
 }
 .arrow {
   margin: 0;

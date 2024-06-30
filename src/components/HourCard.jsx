@@ -1,5 +1,10 @@
 import { useState } from "react";
 import "../styles/HourCard.css";
+import { TbUvIndex } from "react-icons/tb";
+import { WiRain } from "react-icons/wi";
+import { WiStrongWind } from "react-icons/wi";
+import { WiCloudy } from "react-icons/wi";
+import { WiHumidity } from "react-icons/wi";
 
 export default function HourCard(props) {
   const [moreInfo, setMoreInfo] = useState(false);
@@ -30,23 +35,38 @@ export default function HourCard(props) {
         className={moreInfo ? "moreInfoActive showDayCard" : "moreInfoActive"}
       >
         <div className="hourInfoActive">
-          <div>Rain:</div>
+          <div className="hourCardIconContainer">
+            <WiRain className="hourCardIcon" size={22} />
+            Rain:
+          </div>
           <div className="hourInfoNumber">{props.rain}%</div>
         </div>
         <div className="hourInfoActive">
-          <div>Wind:</div>
+          <div className="hourCardIconContainer">
+            <WiStrongWind className="hourCardIcon" size={22} />
+            Wind:
+          </div>
           <div className="hourInfoNumber">{props.wind} k/h</div>
         </div>
         <div className="hourInfoActive">
-          <div>Clouds:</div>
+          <div className="hourCardIconContainer">
+            <WiCloudy className="hourCardIcon" size={22} />
+            Clouds:
+          </div>
           <div className="hourInfoNumber">{props.cloud}%</div>
         </div>
         <div className="hourInfoActive">
-          <div>Humidity:</div>
+          <div className="hourCardIconContainer">
+            <WiHumidity className="hourCardIcon" size={22} />
+            Humidity:
+          </div>
           <div className="hourInfoNumber">{props.humidity}%</div>
         </div>
         <div className="hourInfoActive">
-          <div>UV level:</div>
+          <div className="hourCardIconContainer">
+            <TbUvIndex className="hourCardIcon" size={22} />
+            UV level:
+          </div>
           <div className="hourInfoNumber">{props.uv}</div>
         </div>
       </div>
