@@ -4,7 +4,7 @@
   grid-template-rows: auto auto auto;
   background-color: rgb(255, 255, 255);
   color: rgb(54, 54, 54);
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid transparent;
   transition: border-color 0.5s;
   transition: all 0.3s;
@@ -17,6 +17,7 @@
 }
 .currentWeatherIcon {
   transition: all 0.3s;
+  color: rgb(101, 89, 0);
 }
 .sideBar:hover .currentWeatherIcon {
   color: orangered;
@@ -68,7 +69,7 @@
   }
 
   to {
-    background-color: rgb(255, 60, 0);
+    background-color: rgb(255, 106, 0);
   }
 }
 .sunriseCard,

@@ -44,6 +44,9 @@
   display: flex;
   gap: 5px;
 }
+.hourCardIcon {
+  color: rgb(101, 89, 0);
+}
 .arrow {
   margin: 0;
   font-size: 1.5rem;
