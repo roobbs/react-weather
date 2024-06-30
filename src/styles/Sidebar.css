@@ -7,10 +7,19 @@
   border-radius: 20px;
   border: 1px solid transparent;
   transition: border-color 0.5s;
-  /* min-width: max-content; */
+  transition: all 0.3s;
 }
 .sideBar:hover {
-  border-color: #ff4218;
+  border-color: #9c9c9c;
+}
+.sideBar:hover .sidebarTitle {
+  color: orangered;
+}
+.currentWeatherIcon {
+  transition: all 0.3s;
+}
+.sideBar:hover .currentWeatherIcon {
+  color: orangered;
 }
 .currentHourNumber {
   font-family: monospace;
@@ -47,6 +56,11 @@
   display: flex;
   justify-content: space-between;
   padding: 0rem 1rem;
+}
+.iconContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 @keyframes backgroundColor {
   from {
