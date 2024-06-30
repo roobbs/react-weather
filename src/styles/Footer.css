@@ -7,7 +7,7 @@
   align-items: center;
   gap: 1rem;
 }
-a {
+footer a {
   font-weight: 500;
   color: #ff5810;
   border-radius: 5px;
@@ -16,8 +16,12 @@ a {
   border: 1px solid transparent;
   text-decoration: inherit;
 }
-a:hover {
+footer a:hover {
   color: white;
   background-color: rgba(255, 69, 1, 0.665);
   border-color: rgb(255, 55, 0);
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
