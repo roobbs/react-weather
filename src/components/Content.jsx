@@ -5,9 +5,12 @@ import DayCard from "./DayCard";
 import { useEffect, useState } from "react";
 import jsonData from "../defaultSearch/defaultSearch.json";
 import "../styles/Content.css";
+import DayModal from "./DayModal";
 
 export default function Content() {
   const [search, setSearch] = useState("Inicial");
+  const [dayModalInfo, setDayModalInfo] = useState({});
+  const [openModal, setOpenModal] = useState(false);
   const [weatherObj, setWeatherObj] = useState(jsonData);
 
   useEffect(() => {
@@ -54,6 +57,13 @@ export default function Content() {
     setSearch(loc);
   }
 
+  async function setModalInfo(day) {
+    console.log("Has abierto el modal");
+    console.log(day);
+    await setDayModalInfo(day);
+    await setOpenModal(true);
+  }
+
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
 
@@ -85,7 +95,7 @@ export default function Content() {
               <div className="forecastHourContainer">
                 <div className="forecastTitle">
                   {currentHour < 23
-                    ? "Forecast for the next few hours:"
+                    ? "Forecast for the next hours:"
                     : "Check forecast for next days"}
                 </div>
                 <div className="forecastHourly">
@@ -124,7 +134,8 @@ export default function Content() {
                         uv={day.day.uv}
                         sunrise={day.astro.sunrise}
                         sunset={day.astro.sunset}
-                        hourArray={day.hour}
+                        info={day}
+                        openModal={() => setModalInfo(day)}
                       />
                     ) : null
                   )}
@@ -132,6 +143,9 @@ export default function Content() {
               </div>
             </div>
           </>
+        )}
+        {openModal && (
+          <DayModal onClose={() => setOpenModal(false)} info={dayModalInfo} />
         )}
       </div>
     </div>
