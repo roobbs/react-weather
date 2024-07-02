@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import jsonData from "../defaultSearch/defaultSearch.json";
 import "../styles/Content.css";
 import DayModal from "./DayModal";
+import LocationAlert from "./LocationAlert";
 
 export default function Content() {
-  const [search, setSearch] = useState("Inicial");
+  const [search, setSearch] = useState("Mexico");
+  const [weatherObj, setWeatherObj] = useState(jsonData);
   const [dayModalInfo, setDayModalInfo] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const [weatherObj, setWeatherObj] = useState(jsonData);
+  const [openAlert, setOpenAlert] = useState(false);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -23,6 +25,12 @@ export default function Content() {
         },
         function (error) {
           console.error("Error getting position: " + error.message);
+          if (error.message === "User denied Geolocation") {
+            setOpenAlert(true);
+            setTimeout(() => {
+              setOpenAlert(false);
+            }, 8000);
+          }
         }
       );
     } else {
@@ -69,6 +77,12 @@ export default function Content() {
 
   return (
     <div className="main">
+      {openAlert && (
+        <LocationAlert
+          onClose={() => setOpenAlert(false)}
+          onRetry={() => getLocationPermission(setSearch, setOpenAlert)}
+        />
+      )}
       <Header
         city={weatherObj.location.name}
         region={weatherObj.location.region}
