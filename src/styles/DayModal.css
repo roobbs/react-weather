@@ -1,15 +1,138 @@
-.background {
-  position: absolute;
-  width: 97%;
-  height: 96%;
-  background-color: rgb(232, 232, 232);
+@keyframes intro {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.modalContainer {
   display: flex;
+  flex: 1;
+  gap: 2rem;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+  animation: intro forwards 0.5s;
+  position: relative;
 }
 .closeIcon {
-  color: rgb(255, 64, 0);
-  align-self: flex-end;
-  /* justify-self: end; */
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 34, 0);
+  background-color: rgb(255, 125, 78);
+  border-radius: 8px;
+  padding: 0 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.closeIcon:hover {
+  /* color: rgb(255, 34, 0); */
+  background-color: rgb(255, 157, 10);
+  border-color: rgb(255, 115, 0);
+}
+.modalHourContainer {
+  max-width: 95vw;
+  overflow: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.dayModalContent {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modalDayTitle {
+  color: orangered;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.modalCondition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.minMaxTemp {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.modalMaxTemp {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+.modalMinTemp {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.modalSmallInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.modalSmallInfoContainer .info {
+  display: flex;
+  gap: 15px;
+}
+.modalInfoIcon {
+  display: flex;
+  gap: 2px;
+}
+
+.modalInfoNumber {
+  font-weight: 700;
+}
+.sunInfoContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+@keyframes backgroundColor {
+  from {
+    background-color: #cca700;
+  }
+
+  to {
+    background-color: rgb(255, 106, 0);
+  }
+}
+.sunInfo {
+  background-color: orangered;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: white;
+  display: flex;
+  gap: 1rem;
+  animation: backgroundColor 6s alternate infinite;
+}
+.sunInfo:last-child {
+  animation: backgroundColor 6s alternate-reverse infinite;
+}
+
+.modalIcon {
+  color: rgb(101, 89, 0);
 }
