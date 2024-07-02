@@ -1,0 +1,41 @@
+@keyframes in {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200%);
+  }
+}
+
+.alertContainer {
+  align-self: center;
+  position: absolute;
+  z-index: 1;
+  top: 70px;
+  left: 30%;
+  animation: in 1s ease-in-out, fade 2s ease-out 6s;
+}
+
+.alertContent {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 8px 1rem;
+  border-radius: 5px;
+}
+
+.alertButton {
+  font-size: 1rem;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 68, 0, 0.77);
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 5px;
+}
