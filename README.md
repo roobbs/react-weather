@@ -1,25 +1,31 @@
-# React-Weather
+# Weather Great
 
 ## Visit this project on:
 
-- https://reactweather-roobbs.netlify.app/
+- https://weather-great.vercel.app/
 
 ## Content Table
 
 - [Description](#description)
 - [How this was built?](#how-this-was-built)
-- [Badges](#Badges)
+- [Badges](#badges)
 
 ## Description
 
-This project is meant to be an option for users that want a fast and nice way to visualize weather information of their city.
-The user can see and navigate through the information hourly and daily, and even hourly inside the daily info.
+Weather Great is a fast and intuitive application designed for users who want an efficient way to visualize weather information for any city. Users can easily navigate through weather data hourly and daily, including detailed hourly information within daily forecasts.
+The app allows users to:
+
+- **search for any city**
+- **select a city from search results**
+- **automatically detect their current location to display local weather**
+
+Additionally, users can view weather forecasts for the next two days.
 
 ## How this was built?
 
 - This project was created using Vite with React
 - The weather info is obtained from the WeatherAPI.com site (https://www.weatherapi.com/)
-- This project's site was deployed using Netlify
+- This project's site was deployed using Vercel
 
 ## Badges
 
