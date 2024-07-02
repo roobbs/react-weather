@@ -15,7 +15,9 @@
   align-items: center;
   animation: intro forwards 0.5s;
   position: relative;
+  top: -20px;
 }
+
 .closeIcon {
   align-self: flex-start;
   display: flex;
@@ -28,9 +30,11 @@
   border-radius: 8px;
   padding: 0 5px;
   cursor: pointer;
-  position: absolute;
-  top: 0;
+  position: sticky;
+  top: 20px;
   left: 0;
+  width: fit-content;
+  z-index: 3;
 }
 .closeIcon:hover {
   /* color: rgb(255, 34, 0); */
@@ -50,9 +54,15 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  border: 1px solid transparent;
 }
-
+.dayModalContent:hover {
+  border-color: #9c9c9c;
+}
+.dayModalContent:hover .modalIcon {
+  color: orangered;
+}
 .modalDayTitle {
   color: orangered;
   font-size: 1rem;
@@ -135,4 +145,10 @@
 
 .modalIcon {
   color: rgb(101, 89, 0);
+}
+
+@media screen and (max-width: 1020px) {
+  .modalContainer {
+    top: 5px;
+  }
 }
