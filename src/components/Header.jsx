@@ -39,6 +39,7 @@ export default function Header({ city, region, handleChange }) {
   }
 
   function handleCardClick(value) {
+    console.log(`seleccionaste ${value}`);
     handleChange(value);
     setValue("");
     setListOfCities("");
@@ -63,7 +64,7 @@ export default function Header({ city, region, handleChange }) {
       >
         <FaLocationArrow className="locationImg" />
         <div className="currentCityName">
-          {city}, {region}
+          {city && region ? `${city}, ${region}` : ""}
         </div>
       </div>
 
