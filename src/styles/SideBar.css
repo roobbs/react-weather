@@ -1,3 +1,11 @@
+@keyframes intro {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 .sideBar {
   padding: 2rem 0rem;
   display: grid;
@@ -8,6 +16,7 @@
   border: 1px solid transparent;
   transition: border-color 0.5s;
   transition: all 0.3s;
+  animation: intro forwards 0.4s;
 }
 .sideBar:hover {
   border-color: #9c9c9c;
