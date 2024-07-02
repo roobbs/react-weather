@@ -14,11 +14,20 @@
   position: relative;
   scroll-behavior: smooth;
 }
+@keyframes intro {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 
 .rightContainer {
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 0.5rem;
+  animation: intro forwards 0.5s;
 }
 .forecastHourContainer {
   display: flex;
