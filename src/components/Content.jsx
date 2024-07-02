@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import "../styles/Content.css";
 import DayModal from "./DayModal";
 import LocationAlert from "./LocationAlert";
+import Loader from "./Loader";
 
 export default function Content() {
   const [search, setSearch] = useState("Guadalajara");
@@ -78,14 +79,14 @@ export default function Content() {
   return (
     <div className="main">
       {openAlert && <LocationAlert onClose={() => setOpenAlert(false)} />}
-      {weatherObj && (
-        <Header
-          city={weatherObj.location.name}
-          region={weatherObj.location.region}
-          handleChange={handleSearch}
-        />
-      )}
+
+      <Header
+        city={weatherObj ? weatherObj.location.name : null}
+        region={weatherObj ? weatherObj.location.region : null}
+        handleChange={handleSearch}
+      />
       <div className="content">
+        {!weatherObj && <Loader />}
         {weatherObj && !openModal && (
           <>
             <SideBar
