@@ -16,17 +16,17 @@
 }
 
 .alertContainer {
-  align-self: center;
+  justify-self: center;
   position: absolute;
   z-index: 1;
-  top: 70px;
-  left: 30%;
+  top: 110px;
   animation: in 1s ease-in-out, fade 2s ease-out 6s;
+  margin: 0 2rem;
 }
 
 .alertContent {
   background-color: white;
-  border: 1px solid gray;
+  border: 1px solid rgb(255, 94, 0);
   padding: 8px 1rem;
   border-radius: 5px;
 }
