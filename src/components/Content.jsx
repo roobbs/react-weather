@@ -93,11 +93,12 @@ export default function Content() {
             />
             <div className="rightContainer">
               <div className="forecastHourContainer">
-                <div className="forecastTitle">
-                  {currentHour < 23
-                    ? "Forecast for the next hours:"
-                    : "Check forecast for next days"}
-                </div>
+                {currentHour < 23 && (
+                  <div className="forecastTitle">
+                    Forecast for the next hours:
+                  </div>
+                )}
+
                 <div className="forecastHourly">
                   {weatherObj.forecast.forecastday[0].hour.map((hour, index) =>
                     index >= currentHour + 1 ? (
