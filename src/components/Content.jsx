@@ -75,7 +75,7 @@ export default function Content() {
         handleChange={handleSearch}
       />
       <div className="content">
-        {weatherObj && (
+        {weatherObj && !openModal && (
           <>
             <SideBar
               hour={currentHour}
