@@ -9,7 +9,9 @@ import LocationAlert from "./LocationAlert";
 import Loader from "./Loader";
 
 export default function Content() {
-  const [search, setSearch] = useState("Guadalajara");
+  const [search, setSearch] = useState(
+    localStorage.getItem("lastCity") || "Guadalajara"
+  );
   const [weatherObj, setWeatherObj] = useState(null);
   const [dayModalInfo, setDayModalInfo] = useState({});
   const [openModal, setOpenModal] = useState(false);
@@ -44,7 +46,7 @@ export default function Content() {
           function (position) {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
-            setSearch(`${latitud},${longitud}`);
+            handleSearch(`${latitud},${longitud}`);
           },
           function (error) {
             console.error("Error getting position: " + error.message);
@@ -63,6 +65,7 @@ export default function Content() {
   }, []);
 
   function handleSearch(loc) {
+    localStorage.setItem("lastCity", loc);
     setSearch(loc);
   }
 
