@@ -15,10 +15,10 @@
 Weather Great is a fast and intuitive application designed for users who want an efficient way to visualize weather information for any city. Users can easily navigate through weather data hourly and daily, including detailed hourly information within daily forecasts.
 The app allows users to:
 
-- **search for any city**
-- **select a city from search results**
-- **automatically detect current location to display local weather**
-- **if location permission is not granted, app remebers your last search**
+- **Search for any city**
+- **Select a city from search results**
+- **Automatically detect current location to display local weather**
+- **If location permission is not granted, app remebers your last search**
 
 Additionally, users can view weather forecasts for the next two days.
 
