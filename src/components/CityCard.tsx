@@ -1,6 +1,18 @@
 import "../styles/CityCard.css";
 
-export default function CityCard({ city, region, country, onClick }) {
+interface CityCardProps {
+  city: string;
+  region: string;
+  country: string;
+  onClick: () => void;
+}
+
+export default function CityCard({
+  city,
+  region,
+  country,
+  onClick,
+}: CityCardProps) {
   return (
     <div className="cityCardContainer" onClick={onClick}>
       <div className="citiName">{city}</div>
