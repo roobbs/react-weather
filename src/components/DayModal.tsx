@@ -1,6 +1,6 @@
 import { RiArrowGoBackLine } from "react-icons/ri";
 import "../styles/DayModal.css";
-import HourCard from "./HourCard.jsx";
+import HourCard from "./HourCard";
 import { WiDirectionUp } from "react-icons/wi";
 import { WiDirectionDown } from "react-icons/wi";
 import { WiRain } from "react-icons/wi";
@@ -9,11 +9,52 @@ import { TbUvIndex } from "react-icons/tb";
 import { WiHumidity } from "react-icons/wi";
 import { LuSunrise, LuSunset } from "react-icons/lu";
 
-export default function DayModal({ onClose, info }) {
+interface HourInfo {
+  condition: {
+    icon: string;
+    text: string;
+  };
+  temp_c: number;
+  chance_of_rain: number;
+  wind_kph: number;
+  cloud: number;
+  humidity: number;
+  uv: number;
+}
+
+interface AstroInfo {
+  sunrise: string;
+  sunset: string;
+}
+
+interface DayInfo {
+  date: string;
+  day: {
+    condition: {
+      icon: string;
+      text: string;
+    };
+    maxtemp_c: number;
+    mintemp_c: number;
+    avghumidity: number;
+    uv: number;
+    daily_chance_of_rain: number;
+    maxwind_kph: number;
+  };
+  astro: AstroInfo;
+  hour: HourInfo[];
+}
+
+interface DayModalProps {
+  onClose: () => void;
+  info: DayInfo;
+}
+
+export default function DayModal({ onClose, info }: DayModalProps) {
   const firstDay = info.date;
-  let day = firstDay.split("-");
+  let day: string | string[] = firstDay.split("-");
   const today = new Date().getDate();
-  if (today === day[2] - 1) {
+  if (today === Number(day[2]) - 1) {
     day = `Tomorrow (${info.date})`;
   } else {
     day = firstDay;
