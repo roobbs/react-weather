@@ -7,11 +7,25 @@ import { WiRain } from "react-icons/wi";
 import { WiStrongWind } from "react-icons/wi";
 import { TbUvIndex } from "react-icons/tb";
 
-export default function DayCard(props) {
+interface DayCardProps {
+  date: string;
+  condition: string;
+  img: string;
+  maxTemp: number;
+  minTemp: number;
+  rain: number;
+  wind: number;
+  uv: number;
+  sunrise: string;
+  sunset: string;
+  openModal: () => void;
+}
+
+export default function DayCard(props: DayCardProps) {
   const firstDay = props.date;
-  let day = firstDay.split("-");
+  let day: string | string[] = firstDay.split("-");
   const today = new Date().getDate();
-  if (today === day[2] - 1) {
+  if (today === Number(day[2]) - 1) {
     day = "Tomorrow";
   } else {
     day = firstDay;
