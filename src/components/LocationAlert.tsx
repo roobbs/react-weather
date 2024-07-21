@@ -1,6 +1,10 @@
 import "../styles/LocationAlert.css";
 
-export default function LocationAlert({ onClose }) {
+interface LocationAlertProps {
+  onClose: () => void;
+}
+
+export default function LocationAlert({ onClose }: LocationAlertProps) {
   return (
     <div className="alertContainer">
       <div className="alertContent">
