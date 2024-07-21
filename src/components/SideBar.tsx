@@ -7,7 +7,22 @@ import { WiThermometer } from "react-icons/wi";
 import { WiCloudy } from "react-icons/wi";
 import { WiHumidity } from "react-icons/wi";
 
-export default function SideBar(props) {
+interface SideBarProps {
+  hour: number;
+  image: string;
+  current: number;
+  currentText: string;
+  feels: number;
+  humidity: number;
+  clouds: number;
+  rain: number;
+  wind: number;
+  uv: number;
+  sunrise: string;
+  sunset: string;
+}
+
+export default function SideBar(props: SideBarProps) {
   return (
     <div className="sideBar">
       <div>
