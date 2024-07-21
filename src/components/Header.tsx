@@ -5,9 +5,21 @@ import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import CityCard from "./CityCard";
 
-export default function Header({ city, region, handleChange }) {
+interface City {
+  name: string;
+  region: string;
+  country: string;
+}
+
+interface HeaderProps {
+  city: string | null;
+  region: string | null;
+  handleChange: (value: string) => void;
+}
+
+export default function Header({ city, region, handleChange }: HeaderProps) {
   const [value, setValue] = useState("");
-  const [listOfCities, setListOfCities] = useState("");
+  const [listOfCities, setListOfCities] = useState<City[]>([]);
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
@@ -32,20 +44,19 @@ export default function Header({ city, region, handleChange }) {
     setTimeout(() => setIsFocused(false), 100);
   }
 
-  function handlePress(event) {
+  function handlePress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
       handleChange(value);
     }
   }
 
-  function handleCardClick(value) {
-    console.log(`seleccionaste ${value}`);
+  function handleCardClick(value: string) {
     handleChange(value);
     setValue("");
-    setListOfCities("");
+    setListOfCities([]);
   }
 
-  function handleValue(event) {
+  function handleValue(event: React.ChangeEvent<HTMLInputElement>) {
     console.log(event.target.value);
     setValue(event.target.value);
   }
