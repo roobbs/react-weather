@@ -6,7 +6,19 @@ import { WiStrongWind } from "react-icons/wi";
 import { WiCloudy } from "react-icons/wi";
 import { WiHumidity } from "react-icons/wi";
 
-export default function HourCard(props) {
+interface HourCardProps {
+  num: number;
+  condition: string;
+  img: string;
+  temp: number;
+  rain: number;
+  wind: number;
+  cloud: number;
+  humidity: number;
+  uv: number;
+}
+
+export default function HourCard(props: HourCardProps) {
   const [moreInfo, setMoreInfo] = useState(false);
   function handleMoreInfo() {
     setMoreInfo(!moreInfo);
