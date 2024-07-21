@@ -1,21 +1,97 @@
-import Header from "./Header";
-import SideBar from "./SideBar";
-import HourCard from "./HourCard";
-import DayCard from "./DayCard";
+import Header from "./Header.tsx";
+import SideBar from "./SideBar.tsx";
+import HourCard from "./HourCard.tsx";
+import DayCard from "./DayCard.tsx";
 import { useEffect, useState } from "react";
 import "../styles/Content.css";
-import DayModal from "./DayModal";
-import LocationAlert from "./LocationAlert";
-import Loader from "./Loader";
+import DayModal from "./DayModal.tsx";
+import LocationAlert from "./LocationAlert.tsx";
+import Loader from "./Loader.tsx";
+
+interface HourInfo {
+  condition: {
+    icon: string;
+    text: string;
+  };
+  temp_c: number;
+  chance_of_rain: number;
+  wind_kph: number;
+  cloud: number;
+  humidity: number;
+  uv: number;
+}
+
+interface DayInfo {
+  date: string;
+  day: {
+    condition: {
+      icon: string;
+      text: string;
+    };
+    maxtemp_c: number;
+    mintemp_c: number;
+    avghumidity: number;
+    uv: number;
+    daily_chance_of_rain: number;
+    maxwind_kph: number;
+  };
+  astro: {
+    sunrise: string;
+    sunset: string;
+  };
+  hour: HourInfo[];
+}
+
+interface WeatherObj {
+  location: {
+    name: string;
+    region: string;
+  };
+  current: {
+    condition: {
+      icon: string;
+      text: string;
+    };
+    temp_c: number;
+    feelslike_c: number;
+    humidity: number;
+    cloud: number;
+    precip_mm: number;
+    wind_kph: number;
+    uv: number;
+  };
+  forecast: {
+    forecastday: {
+      date: string;
+      day: {
+        condition: {
+          icon: string;
+          text: string;
+        };
+        maxtemp_c: number;
+        mintemp_c: number;
+        avghumidity: number;
+        uv: number;
+        daily_chance_of_rain: number;
+        maxwind_kph: number;
+      };
+      astro: {
+        sunrise: string;
+        sunset: string;
+      };
+      hour: HourInfo[];
+    }[];
+  };
+}
 
 export default function Content() {
-  const [search, setSearch] = useState(
+  const [search, setSearch] = useState<string>(
     localStorage.getItem("lastCity") || "Guadalajara"
   );
-  const [weatherObj, setWeatherObj] = useState(null);
-  const [dayModalInfo, setDayModalInfo] = useState({});
-  const [openModal, setOpenModal] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false);
+  const [weatherObj, setWeatherObj] = useState<WeatherObj | null>(null);
+  const [dayModalInfo, setDayModalInfo] = useState<DayInfo | {}>({});
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openAlert, setOpenAlert] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(
@@ -64,13 +140,12 @@ export default function Content() {
     }, 100);
   }, []);
 
-  function handleSearch(loc) {
+  function handleSearch(loc: string) {
     localStorage.setItem("lastCity", loc);
     setSearch(loc);
   }
 
-  async function setModalInfo(day) {
-    console.log("Has abierto el modal");
+  async function setModalInfo(day: DayInfo) {
     console.log(day);
     await setDayModalInfo(day);
     await setOpenModal(true);
